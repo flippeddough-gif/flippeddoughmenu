@@ -1,0 +1,13 @@
+{
+  "rate": 90000,
+  "deliveryMaxMinutes": 30,
+  "groups": [
+    {"name":"Manakish","items":[["Zaatar",100,"lbp"],["Zaatar & Khodra",150,"lbp"],["Jebneh",350,"lbp"],["Jebneh & Khodra",400,"lbp"],["Jebneh w Zaatar",300,"lbp"],["Jebneh Ashkawan",450,"lbp"],["Jebneh Harra",380,"lbp"],["Jebneh & Soujok",450,"lbp"],["Lahem bi Ajin",400,"lbp"],["Fatayer Spinach",300,"lbp"],["Keshek",300,"lbp"]]},
+    {"name":"Pizza","items":[["Margarita",8,"usd"],["Vegetarian",9,"usd"],["Pepperoni",10,"usd"],["Turkey & Honey",11,"usd"],["Chicken Fajitas",12,"usd"],["Lebanese Pizza",10,"usd"]]},
+    {"name":"Panuzzo","items":[["Pepperoni & Cheese",9,"usd"],["Turkey & Cheese",9,"usd"],["Grilled Halloumi Pesto",8,"usd"],["Chicken Caesar Panuzzo",10,"usd"],["Fetta Honey & Rocca",10,"usd"],["Beef Philly Panuzzo",12,"usd"],["Chicken Avocado",12,"usd"]]},
+    {"name":"Sandwiches","items":[["Chicken Avocado Sub",8,"usd"],["Chicken Fajitas Sub",8,"usd"],["Philly Steak Sandwich",9,"usd"],["Tawouk & Crispy Potato Sub",7,"usd"]]},
+    {"name":"Mini (12 pc)","items":[["Mini Zaatar 12pc",4,"usd"],["Mini Jebneh 12pc",7,"usd"],["Mini Pizza 12pc",7,"usd"],["Sfiha 12pc",8,"usd"],["Mini Fatayer 12pc",6,"usd"],["Mini Jebneh Harra 12pc",7,"usd"]]},
+    {"name":"Sweets","items":[["Crispy Nutella",7,"usd"],["Nutella Banana & Nuts",7.5,"usd"],["Choco Marshmallow",8.5,"usd"],["Crispy Kunafa",5.5,"usd"]]},
+    {"name":"Drinks","items":[["Soft Drink",80,"lbp"],["Laban 3ayran",80,"lbp"],["Bonjus",30,"lbp"],["Small Water",50,"lbp"]]}
+  ]
+}

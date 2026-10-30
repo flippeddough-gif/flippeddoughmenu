@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#182caa">
+<title>Flipped Dough | Digital Menu</title>
+<style>
+:root{--blue:#263bd3;--navy:#080d20;--ink:#f7f8ff;--muted:#b8bfd8;--panel:#121a31;--line:#293452;--gold:#ffcf6a}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(160deg,#080d20,#11182a 60%,#090d1b);color:var(--ink);font-family:Arial,Helvetica,sans-serif}
+header{position:sticky;top:0;z-index:10;background:#090e20ed;backdrop-filter:blur(12px);border-bottom:1px solid #273252;padding:12px 16px}
+.head{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:10px}.logo{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#354cff,#10184d);border:2px solid #8de9ff;font-size:25px}
+.brand h1{font-size:18px;line-height:1.05;margin:0;letter-spacing:1px}.brand small{color:#a9b8ff;letter-spacing:2px;font-size:10px}
+.cart-pill{border:1px solid #5366ff;background:#18235c;border-radius:99px;padding:9px 12px;font-weight:700;white-space:nowrap}
+.hero{max-width:1100px;margin:20px auto 16px;padding:0 16px}.hero-card{padding:22px;border-radius:22px;background:linear-gradient(120deg,#192b9c,#253dd5 56%,#111b4b);border:1px solid #6475ff;box-shadow:0 12px 40px #0005}
+.hero h2{margin:0 0 8px;font-size:clamp(25px,5vw,38px);letter-spacing:1px}.hero p{margin:0;color:#e0e5ff;line-height:1.5}.hero .info{display:flex;flex-wrap:wrap;gap:8px;margin-top:15px}.chip{background:#080e2c80;border:1px solid #ffffff30;border-radius:30px;padding:7px 10px;font-size:12px}
+main{max-width:1100px;margin:auto;padding:0 16px 130px}.tools{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}.tools input{flex:1;min-width:170px}.field,textarea{width:100%;background:#0a1023;color:#fff;border:1px solid #34405f;border-radius:11px;padding:12px;font:inherit}.tabs{display:flex;gap:8px;overflow-x:auto;padding:2px 0 12px}.tabs button{white-space:nowrap;border:1px solid #34405f;border-radius:30px;padding:9px 13px;color:#dce1ff;background:#121a31;cursor:pointer}.tabs button.active{background:var(--blue);border-color:#8590ff;color:white}
+.section-title{font-size:20px;margin:20px 0 12px}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}.item{background:linear-gradient(150deg,#151e36,#0d1428);border:1px solid var(--line);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:10px;min-height:144px}.item-top{display:flex;justify-content:space-between;gap:10px}.item h3{font-size:15px;line-height:1.3;margin:0}.price{font-weight:800;color:var(--gold);white-space:nowrap;font-size:14px}.subprice{color:var(--muted);font-size:11px;margin-top:4px}.item-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto}.qty{display:flex;align-items:center;gap:10px}.qty button,.add{border:0;cursor:pointer;color:white;font-weight:800}.qty button{width:32px;height:32px;border-radius:10px;background:#273bd0;font-size:18px}.qty span{min-width:16px;text-align:center}.add{background:#263bd3;padding:9px 12px;border-radius:10px}.empty{color:var(--muted);padding:20px;text-align:center}
+.checkout{margin-top:28px;background:#121a31;border:1px solid #334061;border-radius:20px;padding:18px}.checkout h2{margin:0 0 6px}.hint{color:var(--muted);font-size:13px;line-height:1.5}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}.form-grid .full{grid-column:1/-1}.summary{margin:16px 0;background:#090f22;border-radius:13px;padding:14px}.summary-line{display:flex;justify-content:space-between;gap:10px;margin:6px 0;color:#d7def8}.total{font-size:22px;font-weight:900;color:var(--gold);border-top:1px solid #303a58;padding-top:12px;margin-top:12px}.wa{display:block;width:100%;border:0;border-radius:13px;padding:15px;background:#20c768;color:#062613;font-weight:900;font-size:16px;cursor:pointer}.wa:disabled{opacity:.45;cursor:not-allowed}.foot{text-align:center;color:#8894b7;font-size:12px;padding:22px}
+#cartBar{position:fixed;z-index:20;bottom:0;left:0;right:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:#080d20ed;backdrop-filter:blur(12px);border-top:1px solid #293452}
+.cart-inner{max-width:1100px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:14px}.cart-inner small{display:block;color:var(--muted);margin-top:3px}.checkout-btn{background:#fff;color:#101936;border:0;border-radius:12px;padding:12px 17px;font-weight:900;cursor:pointer}
+@media(max-width:560px){.form-grid{grid-template-columns:1fr}.form-grid .full{grid-column:auto}.hero-card{padding:18px}.grid{grid-template-columns:1fr 1fr;gap:8px}.item{padding:11px;min-height:160px}.item h3{font-size:13px}.price{font-size:12px}.item-foot{align-items:flex-end}.qty{gap:7px}.qty button{width:29px;height:29px}.add{padding:8px}.brand h1{font-size:15px}.cart-inner{gap:8px}.checkout-btn{padding:11px 12px}}
+#waiterBtn{position:fixed;z-index:30;right:16px;bottom:calc(84px + env(safe-area-inset-bottom));border:1px solid #8de9ff;background:linear-gradient(135deg,#354cff,#10184d);color:#fff;border-radius:99px;padding:12px 16px;font-weight:900;font-size:14px;cursor:pointer;box-shadow:0 8px 28px #0008}
+#waiter{position:fixed;z-index:40;right:16px;bottom:calc(84px + env(safe-area-inset-bottom));width:min(370px,calc(100vw - 32px));height:min(520px,calc(100vh - 170px));display:none;flex-direction:column;background:#0d1430;border:1px solid #4456c8;border-radius:20px;overflow:hidden;box-shadow:0 16px 50px #000a}#waiter.open{display:flex}
+.w-head{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;background:linear-gradient(120deg,#192b9c,#253dd5)}.w-head strong{display:block}.w-head small{color:#dfe4ff;font-size:11px}.w-close{background:none;border:0;color:#fff;font-size:22px;cursor:pointer}
+.w-log{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px}.w-msg{max-width:85%;padding:9px 12px;border-radius:14px;line-height:1.45;font-size:14px;white-space:pre-wrap}.w-msg.bot{background:#1a2550;align-self:flex-start;border-bottom-left-radius:4px}.w-msg.me{background:#20c768;color:#062613;align-self:flex-end;border-bottom-right-radius:4px}.w-msg.typing{color:var(--muted);font-style:italic}
+.w-quick{display:flex;gap:6px;flex-wrap:wrap;padding:0 12px 8px}.w-quick button{background:#18235c;border:1px solid #5366ff;color:#dfe4ff;border-radius:99px;padding:6px 10px;font-size:12px;cursor:pointer}
+.w-form{display:flex;gap:8px;padding:10px;border-top:1px solid #293452}.w-form input{flex:1;min-width:0}.w-form button{background:var(--gold);color:#1b1300;border:0;border-radius:12px;padding:0 14px;font-weight:900;cursor:pointer}.w-form button:disabled{opacity:.5}
+</style>
+</head>
+<body>
+<header><div class="head"><div class="brand"><div class="logo">🍕</div><div><h1>FLIPPED DOUGH</h1><small>YOUR LOCAL PIZZA & MANAKISH SHOP</small></div></div><div class="cart-pill">🛒 <span id="cartCount">0</span> items</div></div></header>
+<section class="hero"><div class="hero-card"><h2>GOOD DOUGH. GOOD MOOD.</h2><p>Fresh manakish, Italian-crusted pizzas, panuzzo, sandwiches and sweet treats — made for you in Dhour El Choueir.</p><div class="info"><span class="chip">📍 Dhour El Choueir</span><span class="chip">📲 WhatsApp 70 321 545</span><span class="chip">💵 $1 = 90,000 LBP</span><span class="chip">🛵 Delivery in 30 min max</span></div></div></section>
+<main>
+<div class="tools"><input id="search" class="field" placeholder="Search menu…" aria-label="Search menu"><select id="currency" class="field" style="max-width:190px"><option value="lbp">Show totals in LBP</option><option value="both">Show LBP + USD equivalent</option></select></div>
+<div class="tabs" id="tabs"></div>
+<div id="menu"></div>
+<section class="checkout" id="checkout"><h2>Complete your order</h2><div class="hint">Add your contact details and delivery address. When you send the order, WhatsApp will open with your order details ready to send to Flipped Dough.</div>
+<div class="form-grid">
+<div><label for="customer">Customer name *</label><input id="customer" class="field" placeholder="Your name" autocomplete="name"></div>
+<div><label for="phone">Your contact number *</label><input id="phone" class="field" placeholder="+961…" inputmode="tel" autocomplete="tel"></div>
+<div class="full"><label for="address">Delivery address *</label><textarea id="address" rows="2" placeholder="Area, street, building, floor and any directions" autocomplete="street-address"></textarea></div>
+<div class="full"><label for="notes">Order notes (optional)</label><textarea id="notes" rows="2" placeholder="Allergies, special requests, delivery instructions…"></textarea></div>
+</div>
+<div class="summary"><h3 style="margin:0 0 10px">Order summary</h3><div id="summaryLines" class="hint">Your selected items will appear here.</div><div class="summary-line total"><span>Total to pay</span><span id="grandTotal">0 LBP</span></div><div id="usdTotal" class="hint"></div></div>
+<button id="sendOrder" class="wa" disabled>☘ Send order to WhatsApp</button>
+<div class="hint" style="margin-top:10px">WhatsApp number: 70 321 545. Review the prepared message in WhatsApp and press Send to confirm your order.</div>
+</section>
+<div class="foot">FLIPPED DOUGH · Dhour El Choueir · WhatsApp 70 321 545</div>
+</main>
+<div id="cartBar"><div class="cart-inner"><div><strong id="barTotal">0 LBP</strong><small id="barCount">Your basket is empty</small></div><button class="checkout-btn" onclick="document.getElementById('checkout').scrollIntoView({behavior:'smooth'})">Review order ↓</button></div></div>
+<script>
+let RATE=90000;const WA_NUMBER='96170321545';
+let groups=[],all=[];
+const cart={}; let active='All';
+const fmt=n=>new Intl.NumberFormat('en-US',{maximumFractionDigits:0}).format(Math.round(n));
+const priceLbp=i=>i.type==='usd'?i.price*RATE:i.price*1000;
+const priceLabel=i=>i.type==='usd'?'$'+i.price.toFixed(2).replace(/\.00$/,'')+' · '+fmt(priceLbp(i))+' LBP':fmt(priceLbp(i))+' LBP';
+function renderTabs(){let names=['All',...groups.map(g=>g.name)];document.getElementById('tabs').innerHTML=names.map(n=>`<button class="${active===n?'active':''}" onclick="active='${n.replace(/'/g,"\\'")}';renderTabs();renderMenu()">${n}</button>`).join('')}
+function renderMenu(){let q=document.getElementById('search').value.toLowerCase().trim();let selected=all.filter(i=>(active==='All'||i.category===active)&&i.name.toLowerCase().includes(q));let by={};selected.forEach(i=>(by[i.category]??=[]).push(i));document.getElementById('menu').innerHTML=Object.keys(by).map(cat=>`<section><h2 class="section-title">${cat}</h2><div class="grid">${by[cat].map(i=>`<article class="item"><div class="item-top"><div><h3>${i.name}</h3><div class="subprice">${i.type==='usd'?'USD price':'Local price'}</div></div><div class="price">${priceLabel(i)}</div></div><div class="item-foot"><div class="qty"><button aria-label="Remove one ${i.name}" onclick="changeQty('${encodeURIComponent(i.key)}',-1)">−</button><span>${cart[i.key]||0}</span><button aria-label="Add one ${i.name}" onclick="changeQty('${encodeURIComponent(i.key)}',1)">+</button></div><button class="add" onclick="changeQty('${encodeURIComponent(i.key)}',1)">Add +</button></div></article>`).join('')}</div></section>`).join('')||'<div class="empty">No menu items found.</div>'}
+function changeQty(encoded,delta){let key=decodeURIComponent(encoded);cart[key]=Math.max(0,(cart[key]||0)+delta);if(!cart[key])delete cart[key];renderMenu();renderSummary()}
+function getLines(){return all.filter(i=>cart[i.key]>0).map(i=>({...i,qty:cart[i.key],line:priceLbp(i)*cart[i.key]}))}
+function renderSummary(){let lines=getLines(),total=lines.reduce((s,i)=>s+i.line,0),count=lines.reduce((s,i)=>s+i.qty,0);document.getElementById('cartCount').textContent=count;document.getElementById('barCount').textContent=count?`${count} item${count===1?'':'s'} in your basket`:'Your basket is empty';document.getElementById('grandTotal').textContent=fmt(total)+' LBP';document.getElementById('barTotal').textContent=fmt(total)+' LBP';document.getElementById('usdTotal').textContent=document.getElementById('currency').value==='both'&&total?'Approx. $'+(total/RATE).toFixed(2)+' at the menu exchange rate.':'';document.getElementById('summaryLines').innerHTML=lines.length?lines.map(i=>`<div class="summary-line"><span>${i.qty} × ${i.name}</span><span>${fmt(i.line)} LBP</span></div>`).join(''):'Your selected items will appear here.';document.getElementById('sendOrder').disabled=!lines.length}
+function sendOrder(){let lines=getLines();if(!lines.length)return;let name=document.getElementById('customer').value.trim(),phone=document.getElementById('phone').value.trim(),address=document.getElementById('address').value.trim(),notes=document.getElementById('notes').value.trim();if(!name||!phone||!address){alert('Please enter your name, contact number and delivery address.');return}let total=lines.reduce((s,i)=>s+i.line,0);let msg=['🍕 *FLIPPED DOUGH — NEW ORDER*','',`*Customer:* ${name}`,`*Contact:* ${phone}`,`*Delivery address:* ${address}`,'','*ORDER ITEMS*',...lines.map(i=>`• ${i.qty} × ${i.name} — ${fmt(i.line)} LBP${i.type==='usd'?' ($'+i.price.toFixed(2)+' each)':''}`),'',`*TOTAL: ${fmt(total)} LBP*`,`Exchange rate: $1 = ${fmt(RATE)} LBP`,notes?`*Notes:* ${notes}`:'','Please confirm availability and delivery.'].filter(Boolean).join('\n');window.open('https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(msg),'_blank')}
+document.getElementById('search').addEventListener('input',renderMenu);document.getElementById('currency').addEventListener('change',renderSummary);document.getElementById('sendOrder').addEventListener('click',sendOrder);
+fetch('/menu.json').then(r=>r.json()).then(m=>{RATE=m.rate;groups=m.groups;all=groups.flatMap(g=>g.items.map(x=>({name:x[0],price:x[1],type:x[2],category:g.name,key:g.name+'|'+x[0]})));renderTabs();renderMenu();renderSummary()}).catch(()=>{document.getElementById('menu').innerHTML='<div class="empty">Menu could not load. Please refresh the page.</div>'});
+renderTabs();renderSummary();
+</script>
+<button id="waiterBtn" type="button" aria-controls="waiter">🤵 Ask the waiter</button>
+<section id="waiter" aria-label="AI waiter chat"><div class="w-head"><div><strong>🤵 Flipped Dough Waiter</strong><small>Ask about prices, delivery time &amp; our food</small></div><button class="w-close" id="waiterClose" aria-label="Close chat">×</button></div>
+<div class="w-log" id="waiterLog" aria-live="polite"><div class="w-msg bot">Hi! 👋 I'm your Flipped Dough waiter. Ask me about our menu, prices or delivery time.</div></div>
+<div class="w-quick" id="waiterQuick"><button type="button">How long is delivery?</button><button type="button">What pizzas do you have?</button><button type="button">How much is a Jebneh manousheh?</button></div>
+<form class="w-form" id="waiterForm"><input id="waiterInput" class="field" placeholder="Type your question…" maxlength="800" autocomplete="off" aria-label="Your question"><button id="waiterSend">Send</button></form></section>
+<script>
+(()=>{const box=document.getElementById('waiter'),btn=document.getElementById('waiterBtn'),log=document.getElementById('waiterLog'),form=document.getElementById('waiterForm'),input=document.getElementById('waiterInput'),send=document.getElementById('waiterSend'),quick=document.getElementById('waiterQuick');const history=[];
+const toggle=open=>{box.classList.toggle('open',open);btn.style.display=open?'none':'';if(open)input.focus()};
+btn.onclick=()=>toggle(true);document.getElementById('waiterClose').onclick=()=>toggle(false);
+const add=(text,cls)=>{const d=document.createElement('div');d.className='w-msg '+cls;d.textContent=text;log.appendChild(d);log.scrollTop=log.scrollHeight;return d};
+async function ask(q){q=q.trim();if(!q||send.disabled)return;quick.style.display='none';add(q,'me');history.push({role:'user',content:q});input.value='';send.disabled=true;const t=add('Waiter is typing…','bot typing');
+try{const r=await fetch('/api/waiter',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:history})});const d=await r.json();if(!r.ok||!d.reply)throw new Error(d.error);t.remove();add(d.reply,'bot');history.push({role:'assistant',content:d.reply})}
+catch(e){t.remove();history.pop();add(e.message||'Sorry, something went wrong. Please try again or message us on WhatsApp at 70 321 545.','bot')}
+finally{send.disabled=false;input.focus()}}
+form.onsubmit=e=>{e.preventDefault();ask(input.value)};quick.querySelectorAll('button').forEach(b=>b.onclick=()=>ask(b.textContent))})();
+</script>
+</body></html>
